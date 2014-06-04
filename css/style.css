@@ -1,0 +1,435 @@
+/**
+ * 
+ */
+
+
+article h2 { font-family: 'Lobster Two'; font-size: 60px; margin: 5% 0; line-height: 1em; }
+
+.story { height: 1000px; padding: 0; margin: 0; width: 1600px;float:left; position: relative; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.3); border-bottom: 1px solid rgba(0,0,0,0.4); box-shadow: 0 0 50px rgba(0,0,0,0.8);}
+
+/* viewport */
+/* #viewport,div.info{
+	width : 1600px;
+	overflow : hidden;
+	height:750px;
+	position:relative;
+} */
+
+/* Dinamic */
+#viewport,div.info{
+	width: 100%;
+	overflow: hidden;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -100;
+}
+
+#header{
+	width:100%;height:80px;
+	position:fixed;background-color:#EBEDE1;
+	z-index:20;margin:auto;
+	opacity: 0.9;
+	-webkit-box-shadow: 0 -26px 150px #0B4072;
+	-moz-box-shadow: 0 -26px 150px #0B4072;
+	box-shadow: 0 -26px 150px #0B4072;
+}
+#header ul {display:block;width:520px;margin:auto;}
+#header ul li{
+	float:left;
+	width:100px;
+	height:20px;
+	list-style-type:none;
+}
+/* Main Transition */
+/* http://www.roblaplaca.com/examples/bezierBuilder/ */
+#sections-holder{
+	position:relative;
+	width:100%;
+	height:100%;
+	-webkit-transition : left 1.5s cubic-bezier(.92, .60, .78, .89);
+	-moz-transition : left 1.5s cubic-bezier(.92, .60, .78, .89);
+	transition : left 1.5s cubic-bezier(.92, .60, .78, .89);
+	
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	transform: translateZ(0);
+}
+/**
+* ViewPort Size must be calculated depending user screen. In my case is 1600px.
+* Negative values because we are moving to the second cuadrant in the XY plane
+* These classes are applied via javascript
+*/
+.first   {left: 0;}
+.second {left: -100%;}
+.third   {left: -200%;}
+.fourth {left: -300%;}
+.fifth   {left: -400%;}
+
+
+
+/* CSS3 background-size:contain; Performs very slow */
+#first { background: url(../images/bg1a_low.jpg) 0 0 no-repeat;}
+#second { background: url(../images/bg2b_low.jpg) 0 0 no-repeat;}
+#third { background: url(../images/bg3a_low.jpg) 0 0 no-repeat;}
+#fourth { background: url(../images/bg4b_low.jpg) 0 0 no-repeat;}
+#fifth { background: url(../images/bg3b_low.jpg) 0 0 no-repeat;}
+
+/* Positioning */
+#first,#second,#third,#fourth,#fifth,#fifth{
+	position:absolute;
+	top:0;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+
+/* Initial Frame Positions */
+#first  {left:0;}
+#second{left:100%;}
+#third  {left:200%;}
+#fourth{left:300%;}
+#fifth  {left:400%;}
+
+/* Transitions */
+#first div#car{
+	background:url(../images/car.png) no-repeat;
+	width:151px;
+	height:77px;
+	position:absolute;
+}
+.car{
+	-webkit-transform : translate(608px,662px);
+	-moz-transform : translate(608px,662px);
+	transform : translate(608px,662px);
+	
+	-webkit-transition : -webkit-transform 2s ease-in-out;
+	-moz-transition : -moz-transform 2s ease-in-out;
+	transition : transform 2s ease-in-out;
+}
+.carToViewPort{
+	-webkit-transform : translate(1102px,511px);
+	-moz-transform : translate(1102px,511px);
+	transform : translate(1102px,511px);
+	
+	-webkit-transition : -webkit-transform 2s ease-in-out;
+	-moz-transition : -moz-transform 2s ease-in-out;
+	transition : transform 2s ease-in-out;
+}
+
+
+#first img#guy,#first img#leaf{
+	position:absolute;
+}
+
+#leaf{
+	left : 70%;
+	top : 50%;
+}
+.leaf{
+
+
+	-webkit-transition-property: left top;
+	-moz-transition-property: left top;
+	-o-transition-property: left top;
+	-ms-transition-property: left top;
+	transition-property: left top;
+
+	-webkit-transform-origin: 100% 100%;
+	-moz-transform-origin: 100% 100%;
+	-o-transform-origin: 100% 100%;
+	-ms-transform-origin: 100% 100%;
+	transform-origin: 100% 100%;
+	z-index: 6;
+	
+	-webkit-transform: rotate(-20deg);
+	-moz-transform: rotate(-20deg);
+	transform: rotate(-20deg);
+	
+	-webkit-transition: -webkit-transform 2s cubic-bezier(.33, .06, .85, .31);
+	-moz-transition: -moz-transform 2s cubic-bezier(.33, .06, .85, .31);
+	transition: transform 2s cubic-bezier(.33, .06, .85, .31);
+	
+}
+.leafToViewPort{
+
+
+	-webkit-transform: rotate(20deg);
+	-moz-transform: rotate(20deg);
+	-o-transform: rotate(20deg);
+	-ms-transform: rotate(20deg);
+	transform: rotate(20deg);
+
+	-webkit-transform-origin: 100% 100%;
+	-moz-transform-origin: 100% 100%;
+	-o-transform-origin: 100% 100%;
+	-ms-transform-origin: 100% 100%;
+	transform-origin: 100% 100%;
+
+	-webkit-transition-duration: 4s;
+	-moz-transition-duration: 4s;
+	-o-transition-duration: 4s;
+	-ms-transition-duration: 4s;
+	transition-duration: 4s;
+
+	
+	-webkit-transition: left top -webkit-transform 4s cubic-bezier(.33, .06, .85, .31);
+	-moz-transition: left top -moz-transform 4s cubic-bezier(.33, .06, .85, .31);
+	transition: left top transform 4s cubic-bezier(.33, .06, .85, .31);	
+	
+	
+	/* -webkit-transition-property: left top -webkit-transform;
+	-moz-transition-property: left top -moz-transform;
+	-o-transition-property: left top -o-transform;
+	-ms-transition-property: left top -ms-transform;
+	transition-property: left top transform; */
+	z-index: 4;
+}
+
+.guy{
+	-webkit-transform : translate(1159px,493px);
+	-moz-transform : translate(1159px,493px);
+	transform : translate(1159px,493px);
+	opacity: 0;
+	/* display:none; */
+	-webkit-transition : -webkit-transform 1s ease-in-out;
+	-moz-transition : -moz-transform 1s ease-in-out;
+	transition : transform 1s ease-in-out;
+}
+.guyToViewPort{
+	top : 490px;
+	left : 1215px;
+	
+	opacity: 1;
+	display:block;
+	
+	-webkit-transform : scale(2,2);
+	-moz-transform : scale(2,2);
+	transform : scale(2,2);
+	
+	-webkit-transform : rotateX(90deg);
+	-moz-transform : rotateX(90deg);	
+	transform : rotateX(90deg);	
+	
+	-webkit-transition : all 2s ease-in 1s, opacity 100ms ease-in-out 2s;
+	-moz-transition : all 2s ease-in 1s, opacity 100ms ease-in-out 2s;
+	transition : all 2s ease-in 1s, opacity 100ms ease-in-out 2s;
+}
+
+#second div#clouds{
+	background:url(../images/clouds.png) no-repeat;
+	width:100%;
+	height:139px;
+	position:absolute;
+	top:245px;
+}
+.clouds{
+	opacity : 0;
+	/* Transtition On State */
+	-webkit-transition :opacity 2s ease-in;
+	-moz-transition :opacity 2s ease-in;
+	transition :opacity 2s ease-in;
+
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	transform: translateZ(0);
+}
+.cloudsToViewPort{
+	opacity : 1;
+	/* Transtition Off State */
+	-webkit-transition :opacity 2s ease-in;
+	-moz-transition :opacity 2s ease-in;
+	transition :opacity 2s ease-in;
+	
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	transform: translateZ(0);
+}
+
+
+#third div#clouds2{
+	background:url(../images/clouds2.png) no-repeat;
+	width:412px;
+	height:125px;
+	position:absolute;
+}
+.clouds2{
+	top: 64px;
+	left: 100%;
+	-webkit-transition : top 2s linear, left 2s linear;
+	-moz-transition : top 2s linear, left 2s linear;
+	transition : top 2s linear, left 2s linear;
+}
+.clouds2ToViewPort{
+	top: -46px;
+	left: 32%;
+	-webkit-transition : top 15s linear, left 15s linear;
+	-moz-transition : top 15s linear, left 15s linear;
+	transition : top 15s linear, left 15s linear;
+}
+
+#third div#clouds3{
+	background:url(../images/clouds3.png) no-repeat;
+	width:412px;
+	height:125px;
+	position:absolute;
+	opacity : .5;
+}
+.clouds3{
+	top: 85%;
+	left: 100%;
+	-webkit-transition : top 2s linear, left 2s linear;
+	-moz-transition : top 2s linear, left 2s linear;
+	transition : top 2s linear, left 2s linear;
+}
+.clouds3ToViewPort{
+	top: 100%;
+	left: 36%;
+	-webkit-transition : top 15s linear, left 15s linear;
+	-moz-transition : top 15s linear, left 15s linear;
+	transition : top 15s linear, left 15s linear;
+}
+
+
+#third div#pines{
+	background:url(../images/pines.png) no-repeat;
+	width:432px;
+	height:274px;
+	position:absolute;
+	top:209px;
+}
+
+
+.pines{
+	left:-432px;
+	-webkit-transition :left 1s ease-in;
+	-moz-transition :left 1s ease-in;
+	transition :left 1s ease-in;
+	
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	transform: translateZ(0);
+}
+.pinesToViewPort{
+	left:0;
+	/* Set Transition to the off state */
+	-webkit-transition :left 2s ease-out;
+	-moz-transition :left 2s ease-out;
+	transition :left 2s ease-out;
+
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	transform: translateZ(0);
+}
+
+#fourth img#vela1{
+	position:absolute;
+	top:500px;
+}
+.vela1{
+	left:1500px;
+	-webkit-transition:left 2s ease-in;
+	-moz-transition:left 2s ease-in;
+	transition:left 2s ease-in;
+}
+.vela1ToViewPort{
+	left : 840px;
+	-webkit-transition:left 40s ease-in;
+	-moz-transition:left 40s ease-in;
+	transition:left 40s ease-in;
+}
+
+#fourth img#vela2{
+	position: absolute;
+}
+.vela2{
+	top: 475px;
+	left: 1011px;
+	-webkit-transition : top 2s linear, left 2s linear;
+	-moz-transition : top 2s linear, left 2s linear;
+	transition : top 2s linear, left 2s linear;
+}
+.vela2ToViewPort{
+	top: 606px;
+	left: 186px;
+	-webkit-transition : top 35s linear, left 35s linear;
+	-moz-transition : top 35s linear, left 35s linear;
+	transition : top 35s linear, left 35s linear;
+}
+#fifth_bg{
+	z-index : -1;
+}
+.fifth_bg{
+	/* background: url(../images/bg3b_slices_01.jpg) 50% 1px no-repeat, url(../images/bg3b_slices_02.jpg) 70% center no-repeat,url(../images/bg3b_slices_03.jpg) 80% bottom no-repeat; */
+	background-image: url(../images/bg3b_low.jpg);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	-webkit-transition : background-position 2s ease-in-out;
+}
+.fifth_bgToViewPort{ 
+	background-position : 50% 0;
+	-webkit-transition : background-position 2s ease-in-out;
+}
+
+
+/* Content */
+article#data_golf,article#data_show_room,article#data_village{
+	background:#000;
+	color: white;
+	padding: 2%;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+	line-height: 1.5em;
+	color: white;
+	position: absolute;
+	box-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
+	border: 1px solid rgba(150, 150, 150, 0.1);
+	left: 25%;
+	max-width:600px;
+	z-index:2;
+	opacity : .87;
+}
+.data_golf,.data_show_room,.data_village{
+	top: 100%;
+	-webkit-transition : top 2s ease-in-out;
+	-moz-transition : top 2s ease-in-out;
+	transition : top 2s ease-in-out;
+	
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	transform: translateZ(0);
+}
+.data_golfToViewPort,.data_show_roomToViewPort,.data_villageToViewPort{
+	top: 25%;
+	-webkit-transition : top 2s cubic-bezier(.78, .58, .60, 1);
+	-moz-transition : top 2s ease-in-out;
+	transition : top 2s ease-in-out;
+	
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	transform: translateZ(0);
+}
+
+/* Introduction */
+
+#first article p,#first article a { color: #ccc; }
+#first article a { text-decoration: underline; }
+#first article a:hover { color: #fff; }
+
+/* Background Only */
+#second article p { margin-bottom: 25px; }
+#second article a { color: #ff0;}
+
+
+
+#third .photograph { background: url(../images/photo.png) transparent 40% 100px no-repeat fixed; min-height: 1000px; padding: 0; margin: 0; width: 100%; max-width: 1920px; position: relative; margin: 0 auto; }
+#third article p { width: 300px; margin-bottom: 25px; }
+
+/* HTML5 Video */
+#fourth article p { width: 300px; margin: 50px 0; }
+#fourth video { position: fixed; left: 50%; box-shadow: 0 0 25px rgba(0,0,0,0.7); z-index: 1;}
+
+/* The End */
+#theend .byebye { background: url(../images/theend.png) 40% 100px no-repeat fixed; height: 1000px; padding: 0; margin: 0; width: 100%; max-width: 1920px; position: relative; margin: 0 auto; }
+
+
